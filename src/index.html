@@ -1,10 +1,86 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    Well hey there!!!
-  </body>
+<html style="width: 100%; height: 100%; overflow:auto;">
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="scripts/settings.js"></script>
+  <script type="text/javascript" src="scripts/errors.js"></script>
+  <script type="text/javascript" src="scripts/installer.js"></script>
+  <script type="text/javascript" src="scripts/view.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+
+  <script>
+    // dynamically add the <title> element
+    const title = document.createElement("title");
+    title.innerText = `${settings.humanReadableName} Installer`;
+    document.querySelector("head").appendChild(title);
+  </script>
+  
+</head>
+
+<body>
+  
+  <header class="extension-details">
+    <img class="icon icon--large" src="images/prodIcon.png" alt="" />
+    <hgroup>
+      <h1 class="title"></h1>
+      <h2 class="version"></h2>
+    </hgroup>
+
+  </header>
+
+  <main class="views">
+
+    <article class="view view--actions view--active">
+      <h1>Get Started</h1>
+      <p>Use this tool to install the <span class="app-name">...</span> extension onto this computer.</p>
+      <section class="actions">
+        <button class="install primary" disabled>Install</button>
+        <span>or</span>
+        <button class="exit secondary" disabled>Exit</button>
+      </section>
+    </article>
+
+    <article class="view view--installing">
+      <h1>Installing...</h1>
+      <div class="progressContainer">
+        <div id="progressTrack"></div>
+      </div>
+      <!-- <button class="cancel secondary" disabled>Cancel</button> -->
+    </article>
+
+    <article class="view view--errors">
+      <h1>Could not install <span class="app-name"></span></h1>
+      <p class="message"></p>
+      <section class="actions">
+        <button class="exit secondary" disabled>Exit</button>
+      </section>
+
+      <!-- This section will only display if supportURL of package.json is defined -->
+      <div class="support" style="display: none">
+        <hr />
+        <p>
+          <button class="support-url primary">Get Help</button>
+        </p>
+      </div>
+    </article>
+
+    <article class="view view--complete">
+      <h1>Success!</h1>
+      <p><span class="app-name">Extension</span> was installed successfully.</p>
+      <p>You will need to restart any open Adobe Applications for the Extension to take effect.</p>
+      <div>
+        <button class="exit" disabled>Done</button>
+      </div>
+    </article>
+  </main>
+
+  <footer class="carousel" style="display: none">
+    <p class="message">While you're waiting, why not check some of my other extensions!</p>
+    <button class="primary learn-more">Learn More</button>
+  </footer>
+
+  <script type="text/javascript" src="scripts/main.js"></script>
+</body>
+
 </html>
