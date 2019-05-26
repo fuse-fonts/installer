@@ -42,7 +42,8 @@
     }
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "sudo-prompt": "^8.2.5"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.39",

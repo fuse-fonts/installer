@@ -1,0 +1,214 @@
+@font-face {
+    font-family: 'source_sans_prolight';
+    src: url('sourcesanspro-light-webfont.woff2') format('woff2'),
+         url('sourcesanspro-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'source_sans_proregular';
+    src: url('sourcesanspro-regular-webfont.woff2') format('woff2'),
+         url('sourcesanspro-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.5em;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+button, input {
+  font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid #5a5a5a;
+  margin: 1.5rem -1rem;
+  width: 100vw;
+}
+
+body {
+  margin: 0 0;
+  padding: 0 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #444;
+  color: #d6d6d6;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 1rem 0;
+}
+
+button {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5em;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  min-width: 8rem;
+}
+
+button[disabled] {
+  opacity: 0.5;
+}
+
+button.primary {
+  background-color: #1373E6;
+  color: #eef;
+}
+
+button + button {
+  margin-left: 1rem;
+}
+
+body > header {
+  height: 20vh;
+  background-color: #4a4a4a;
+}
+
+body > main {
+  height: 55vh;
+  padding-top: 10vh;
+  background-color: #444444;
+}
+
+body > footer {
+  height: 25vh;
+  padding: 2vh 0;
+  text-align: center;
+  background-color: #4d4d4f;
+}
+
+article.view {
+  text-align: center;
+}
+
+.view h1 {
+  font-weight: 400;
+  color: #fff;
+}
+
+.view {
+  color: #b2b2b2;
+}
+
+.title,
+.version {
+  margin: 0 0;
+}
+
+.title {
+  font-weight: 400;
+  color: #dbdbdb;
+}
+
+.version {
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #888;
+  text-align: right;
+}
+
+.extension-details {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding: 1rem 1rem;
+  color: #fff;
+}
+
+.extension-details .icon {
+  width: 6rem;
+  margin-right: 4rem;
+  margin-top: -0.5rem;
+}
+
+.icon {
+  width: 10vw;
+}
+
+.icon--large {
+  width: 20vw;
+}
+
+.progressContainer {
+  position: relative;
+  background: #222;
+  height: 6px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  overflow: hidden;
+}
+
+.views > * {
+  padding: 1rem 1rem;
+  display: none;
+}
+
+.views > .view--active {
+  display: block;
+}
+
+.actions {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#progressTrack {
+    background: #1373E6;
+    height: 6px;
+    position: absolute;
+    animation: loader 2s;
+    -webkit-animation: loader 2s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    transition-timing-function: linear;
+    -webkit-transition-timing-function: linear;  
+  margin-left: 0;
+}
+
+@keyframes loader {
+  0% {width: 0%;left:0;right:0}
+  50% { width: 100%;left:0;right:0} 
+  99% { width: 0%;left:100%;right:0} 
+}
+
+@-webkit-keyframes loader {
+  0% {width: 0%;left:0;right:0}
+  50% { width: 100%;left:0;right:0} 
+  99% { width: 0%;left:100%;right:0} 
+}
