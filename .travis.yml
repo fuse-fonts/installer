@@ -48,8 +48,8 @@ config: {
       name: "dobe Plugin Installer"
     },
     github_repository: {
-      owner: "RoryDuncan",
-      name: "adobe-plugin-installer"
+      owner: "",
+      name: ""
     }
   }
 }
