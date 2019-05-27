@@ -26,12 +26,12 @@ class View {
     this.$exitBtns = document.querySelectorAll(".exit");
     // this.$cancelBtn = document.querySelector(".cancel");
 
-    this.$appTitle.innerText = settings.humanReadableName;
+    this.$appTitle.innerText = settings.productName;
     this.$appVersion.innerText = `v${settings.version || "1.0"}`;
 
     // update places in the app where we expect the name of our extension
     this.$appName = Array.prototype.forEach.call(document.querySelectorAll(".app-name"), (function(el){
-      el.innerText = settings.humanReadableName;
+      el.innerText = settings.productName;
     }));
 
     // event listeners
