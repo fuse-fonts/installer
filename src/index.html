@@ -12,7 +12,7 @@
   <script>
     // dynamically add the <title> element
     const title = document.createElement("title");
-    title.innerText = `${settings.humanReadableName} Installer`;
+    title.innerText = `${settings.productName} Installer`;
     document.querySelector("head").appendChild(title);
   </script>
   
@@ -33,13 +33,17 @@
 
     <article class="view view--actions view--active">
       <h1>Get Started</h1>
-      <p>Use this tool to install the <span class="app-name">...</span> extension onto this computer.</p>
+      <p>Use this tool to install the <span class="app-name">...</span> extension.</p>
       <section class="actions">
         <button class="install primary" disabled>Install</button>
         <span>or</span>
         <button class="exit secondary" disabled>Exit</button>
       </section>
     </article>
+
+    <!-- <article class="view view--loading">
+      <h1>Loading</h1>
+    </article> -->
 
     <article class="view view--installing">
       <h1>Installing...</h1>

@@ -1,0 +1,16 @@
+{
+    "name": "fuse-fonts",
+    "debug": true,
+    "extensionID": "com.fusefonts.extension",
+    "productName": "Fuse Fonts",
+    "main": "main.js",
+    "description": "",
+    "appWidth": 460,
+    "appHeight": 700,
+    "author": "Rory Duncan",
+    "version": "0.0.1",
+    "zxpPath": "/bin/fuse-fonts.zxp",
+    "supportURL": "",
+    "learnMoreURL": ""
+  }
+  

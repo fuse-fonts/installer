@@ -1,4 +1,4 @@
 "use strict";
 
-const settings = require("./package.json");
+const settings = require("./settings.json");
 global.settings = settings;

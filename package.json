@@ -1,8 +1,8 @@
 {
-  "name": "adobe-plugin-installer",
-  "productName": "adobe-plugin-installer",
+  "name": "fuse-fonts-installer",
+  "productName": "Manage Fuse Fonts",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Install or Uninstall Fuse Fonts",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",

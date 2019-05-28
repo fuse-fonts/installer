@@ -11,9 +11,9 @@ class View {
   constructor(settings) {
 
     this.settings = settings;
-    this.zxpPath = __dirname + settings.zxpPath;
+    this.zxpPath = settings.zxpPath;
 
-    this.installer = new Installer(this.zxpPath);
+    this.installer = new Installer(settings);
 
     // ui
     this.$appTitle = document.querySelector(".title");

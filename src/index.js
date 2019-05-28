@@ -1,4 +1,6 @@
 const { app, BrowserWindow } = require('electron');
+const settings = require("./settings.json");
+const isDebug = settings.debug === true;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -11,23 +13,35 @@ let mainWindow = null;
 
 const createWindow = () => {
   // Create the browser window.
-  mainWindow = new BrowserWindow({
+
+  let options = {
     webPreferences: {
       nodeIntegration: true,
     },
-    width: 1000,
-    height: 700,
-    'min-width': 1000,
-    'min-height': 700,
-    'max-width': 1920,
-    'max-height': 1920,
-  });
+    width: settings.appWidth,
+    height: settings.appHeight,
+  };
+
+  if (isDebug) {
+    options = Object.assign(options, {
+      width: 1000,
+      height: 700,
+      'min-width': 1000,
+      'min-height': 700,
+      'max-width': 1920,
+      'max-height': 1920,
+    });
+  }
+
+  mainWindow = new BrowserWindow(options);
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  if (isDebug) {
+    mainWindow.webContents.openDevTools();
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {

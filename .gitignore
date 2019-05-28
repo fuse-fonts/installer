@@ -2,4 +2,3 @@ node_modules
 out
 .DS_STORE
 src/bin/*.zxp
-src/package.json
