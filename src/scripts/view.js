@@ -23,6 +23,7 @@ class View {
     this.$progressTrack = document.querySelector(".progress-track");
 
     this.$installBtn = document.querySelector(".install");
+    this.$uninstallBtn = document.querySelector(".uninstall");
     this.$exitBtns = document.querySelectorAll(".exit");
     // this.$cancelBtn = document.querySelector(".cancel");
 
@@ -36,6 +37,7 @@ class View {
 
     // event listeners
     this.$installBtn.addEventListener("click", this.installClicked.bind(this));
+    this.$uninstallBtn.addEventListener("click", this.uninstallClicked.bind(this));
     
     // add event lsiteners to all .exit elements
     const exitApp = this.cancelClicked.bind(this);
@@ -46,6 +48,7 @@ class View {
 
     // remove disabled from the first two options
     this.$installBtn.attributes.removeNamedItem("disabled");
+    this.$uninstallBtn.attributes.removeNamedItem("disabled");
 
 
     // support url of errors view
@@ -58,15 +61,16 @@ class View {
     this.$carousel = document.querySelector(".carousel");
 
     this.views = {
-      $actions:     document.querySelector(".view.view--actions"),
-      $installing:  document.querySelector(".view.view--installing"),
+      $loading:     document.querySelector(".view.view--loading"),
+      $install:     document.querySelector(".view.view--install"),
+      $uninstall:   document.querySelector(".view.view--uninstall"),
+      $working:  document.querySelector(".view.view--working"),
       $error:       document.querySelector(".view.view--errors"),
       $complete:    document.querySelector(".view.view--complete")
     };
 
     this.activeClassName = "view--active";
     this.$activeView = document.querySelector(`.${this.activeClassName}`);
-    console.log(this);
   }
 
   changeView($ref) {
@@ -75,26 +79,39 @@ class View {
     this.$activeView = $ref;
   }
 
+  /** Checks if the extension is installed or not. 
+   * if it is, it will display the uninstall view, otherwise it will display the install view
+   */
+  prepareInitialView() {
+    this.checkIfExtensionIsInstalled()
+      .then(status => {
+        if (status.extensionInstalled) {
+          this.changeView(this.views.$uninstall);
+        }
+        else {
+          this.changeView(this.views.$install);
+        }
+      })
+  }
+
   /**
-   * Begins installing the extension
+   * Begins installing the extension by using the installer class
    */
   installExtension() {
-
-    const that = this;
-    const promise = this.installer.install();
-
-    promise.then(that.postInstall.bind(this), that.failed.bind(this));
-
-    return promise;
+    return this.installer.install()
+      .then(message => this.changeView(this.views.$complete), this.failed.bind(this));
   }
 
   uninstallExtension() {
-    throw new Error("Not Implemented");
+    return this.installer.uninstall()
+      .then(() => this.changeView(this.views.$complete), this.failed.bind(this))
   }
 
-  postInstall() {
-    console.log("success");
-    this.changeView(this.views.$complete);
+  /** 
+   * Checks if the extension is installed
+   */
+  checkIfExtensionIsInstalled() {
+    return this.installer.checkStatus();
   }
 
   failed(error) {
@@ -134,9 +151,15 @@ class View {
     shell.openExternal(this.settings.learnMoreURL);
   }
 
-  installClicked() {
+  uninstallClicked() {
+    this.views.$working.querySelector("h1").innerText = "Uninstalling...";
+    this.changeView(this.views.$working);
+    this.uninstallExtension();
+  }
 
-    this.changeView(this.views.$installing);
+  installClicked() {
+    this.views.$working.querySelector("h1").innerText = "Installing...";
+    this.changeView(this.views.$working);
     if (this.settings.learnMoreURL) {
       this.$carousel.style.display = null;
     }

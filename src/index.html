@@ -31,7 +31,22 @@
 
   <main class="views">
 
-    <article class="view view--actions view--active">
+    <article class="view view--loading view--active">
+      <h1>Loading</h1>
+      <p>Checking your device...</p>
+    </article>
+
+    <article class="view view--uninstall">
+        <h1>Fuse Fonts is already installed</h1>
+        <p>You can use this tool to uninstall the <span class="app-name">...</span> extension.</p>
+        <section class="actions">
+          <button class="uninstall primary" disabled>Uninstall</button>
+          <span>or</span>
+          <button class="exit secondary" disabled>Exit</button>
+        </section>
+      </article>
+
+    <article class="view view--install">
       <h1>Get Started</h1>
       <p>Use this tool to install the <span class="app-name">...</span> extension.</p>
       <section class="actions">
@@ -41,20 +56,15 @@
       </section>
     </article>
 
-    <!-- <article class="view view--loading">
-      <h1>Loading</h1>
-    </article> -->
-
-    <article class="view view--installing">
+    <article class="view view--working">
       <h1>Installing...</h1>
       <div class="progressContainer">
         <div id="progressTrack"></div>
       </div>
-      <!-- <button class="cancel secondary" disabled>Cancel</button> -->
     </article>
 
     <article class="view view--errors">
-      <h1>Could not install <span class="app-name"></span></h1>
+      <h1>There was a problem.</h1>
       <p class="message"></p>
       <section class="actions">
         <button class="exit secondary" disabled>Exit</button>
@@ -71,9 +81,8 @@
 
     <article class="view view--complete">
       <h1>Success!</h1>
-      <p><span class="app-name">Extension</span> was installed successfully.</p>
-      <p>You will need to restart any open Adobe Applications for the Extension to take effect.</p>
-      <div>
+      <p>You may need to restart any open Adobe Applications for changes to take effect.</p>
+      <div class="actions">
         <button class="exit" disabled>Done</button>
       </div>
     </article>

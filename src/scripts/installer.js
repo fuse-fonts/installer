@@ -44,7 +44,6 @@ class Installer {
     const command = [targetPath, this.checkExtensionsCommand].join(" ");
 
     console.log(`Checking if "${that.extensionID}" is installed...`);
-    console.log("command:", command)
 
     return new Promise((resolve, reject) => {
       // use sudo.exec for forcing elevated privs
@@ -54,7 +53,6 @@ class Installer {
           return reject(error);
         }
 
-        console.log({stdout, stderr});
         let extensionInstalled = stdout.includes(that.extensionID);
 
         return resolve({extensionInstalled});
@@ -66,7 +64,7 @@ class Installer {
     const that = this;
     const successfulMessage = "Installation Successful";
     const options = {
-      name: `${this.productName} Installer`,
+      name: `${this.settings.productName} Installer`,
     }
 
     return new Promise(function (resolve, reject) {
@@ -87,7 +85,7 @@ class Installer {
         }
 
         if (stdout.includes(successfulMessage)) {
-          return resolve();
+          return resolve("Unnstalled");
         }
 
         reject(stderr || stdout);
@@ -97,7 +95,37 @@ class Installer {
   }
 
   uninstall() {
-    throw new Error("Not Implemented");
+    
+    const that = this;
+    const successfulMessage = "Removal Successful";
+    const options = {
+      name: `${this.settings.productName} Uninstaller`,
+    }
+
+    return new Promise(function (resolve, reject) {
+      const command = [path.join(__dirname, that.target), that.uninstallCommand, that.extensionID].join(" ");
+      
+      sudo.exec(command, options, function(error, stdout, stderr) {
+        
+        console.log({stdout, stderr});
+        if (error) {
+          console.warn("error executing sudo");
+          let message = error.message || "An unknown error occurred.";
+          if (message.toLowerCase() === "user did not grant permission.") {
+            message = message.replace("User", "You");
+          }
+
+          return reject(message);
+        }
+
+        if (stdout.includes(successfulMessage)) {
+          return resolve("Unnstalled");
+        }
+
+        reject(stderr || stdout);
+      });
+
+    });
   }
 
 }
