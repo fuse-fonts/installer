@@ -1,6 +1,6 @@
 {
     "name": "fuse-fonts",
-    "debug": true,
+    "debug": false,
     "extensionID": "com.fusefonts.extension",
     "productName": "Fuse Fonts",
     "main": "main.js",

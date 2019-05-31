@@ -105,7 +105,7 @@ class Installer {
 
     return new Promise(function (resolve, reject) {
       const targetPath = path.join(__dirname, that.target);
-      const command = `${targetPath} ${that.uninstallCommand} ${that.extensionID}`;
+      const command = `"${targetPath}" ${that.uninstallCommand} ${that.extensionID}`;
       
       sudo.exec(command, options, function(error, stdout, stderr) {
         
