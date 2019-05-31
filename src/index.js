@@ -20,6 +20,11 @@ const createWindow = () => {
     },
     width: settings.appWidth,
     height: settings.appHeight,
+    frame: false,
+    titleBarStyle: "hidden",
+    backgroundColor: "#262626",
+    fullscreenable: false,
+    title: settings.productName || "Fuse Fonts Installer",
   };
 
   if (isDebug) {
