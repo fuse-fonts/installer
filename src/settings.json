@@ -8,9 +8,8 @@
     "appWidth": 460,
     "appHeight": 700,
     "author": "Rory Duncan",
-    "version": "0.9.0",
+    "version": "1.0.2",
     "zxpPath": "/bin/fuse-fonts.zxp",
     "supportURL": "https://github.com/fuse-fonts/issue-tracker/issues",
-    "learnMoreURL": ""
+    "learnMoreURL": "https://fusefonts.com/learn"
   }
-  
