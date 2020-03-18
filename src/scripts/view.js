@@ -85,6 +85,7 @@ class View {
   prepareInitialView() {
     this.checkIfExtensionIsInstalled()
       .then(status => {
+        
         if (status.extensionInstalled) {
           this.changeView(this.views.$uninstall);
         }
@@ -92,6 +93,12 @@ class View {
           this.changeView(this.views.$install);
         }
       })
+  }
+
+  displayLearnMore() {
+    if (this.settings.learnMoreURL) {
+      this.$carousel.style.display = null;
+    }
   }
 
   /**
@@ -147,23 +154,24 @@ class View {
     shell.openExternal(this.settings.supportURL);
   }
 
-  learnMoreClicked() {
+  learnMoreClicked(e) {
+    e.preventDefault();
     shell.openExternal(this.settings.learnMoreURL);
   }
 
   uninstallClicked() {
     this.views.$working.querySelector("h1").innerText = "Uninstalling...";
     this.changeView(this.views.$working);
+
+    this.displayLearnMore();
     this.uninstallExtension();
   }
 
   installClicked() {
     this.views.$working.querySelector("h1").innerText = "Installing...";
     this.changeView(this.views.$working);
-    if (this.settings.learnMoreURL) {
-      this.$carousel.style.display = null;
-    }
 
+    this.displayLearnMore();
     this.installExtension();
   }
 
