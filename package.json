@@ -1,6 +1,6 @@
 {
   "name": "fuse-fonts-installer",
-  "productName": "Manage Fuse Fonts",
+  "productName": "fusefonts",
   "version": "1.0.0",
   "description": "Install or Uninstall Fuse Fonts",
   "main": "src/index.js",
