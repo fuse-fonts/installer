@@ -1,6 +1,10 @@
 {
   "name": "fuse-fonts-installer",
   "productName": "fusefonts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fuse-fonts/installer"
+  },
   "version": "1.0.0",
   "description": "Install or Uninstall Fuse Fonts",
   "main": "src/index.js",
